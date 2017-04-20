@@ -20,7 +20,22 @@ def remove_user(username):
     return False if username in get_all_users() else True
 
 def get_that_user(username):
- grep_process = Popen(["grep","/bin/bash","/etc/passwd"], stdout=PIPE, stderr=PIPE)
- userdata = Popen(["awk",'-F',':','{print $1";"$5";"$6}'], stdin=grep_process.stdout, stdout=PIPE, stderr=PIPE).communicate()[0].split('\n')
- userdata = [x.split(";") for x in userdata]
- return filter(lambda x: x[0] == username ,userdata)
+ if username in get_all_users():
+  grep = Popen(["grep", username, "/etc/passwd"], stdout=PIPE, stderr=PIPE)
+  usuario = grep.communicate()[0]
+  return usuario 
+
+def recently_logged():
+ grep = Popen(["lastlog","-t","5"],stdout=PIPE, stderr=PIPE)
+ logged = Popen(["awk",'-F',':','{print $1}'],stdin=grep.stdout, stdout=PIPE, stderr=PIPE).communicate()[0].split('\n')
+ return logged
+
+def recently_commands(username):
+ if username in get_all_users():
+  comandos = Popen (["cat","/home/"+username+"/.bash_history"], stdout=PIPE, stderr=PIPE).communicate()[0].split('\n')
+  return filter(None, comandos)
+ else:
+  return False
+
+
+

@@ -1,0 +1,1 @@
+el comando visudo sirve para alterar o modificar la configuracion de archivo sudo de sudoers, este archivo controla quien puede ejecutar que comandos en el sistema operativos y maneja niveles de restriccion para ello. de esta forma se pueden tener niveles de acceso y control al sistema operativo.
