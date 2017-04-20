@@ -44,11 +44,8 @@ def delete_single__user(username):
 def recent_users():
  logged = {}
  logged = recently_logged()
+ return json.dumps(logged), 200
 
- if logged:
-  return json.dumps(logged),200
- else:
-  return "No hay usuarios recientemente logeados"
 
 @app.route(api_url+'/users/recently_logged',methods=['POST'])
 def post_recently():
