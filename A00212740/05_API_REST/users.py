@@ -1,7 +1,7 @@
 from flask import Flask, abort, request
 import json
 
-from users_commands import get_all_users, add_user, remove_user, recently_logged, get_that_user, recently_commands
+from users_commands import get_all_users, add_user, remove_user, get_that_user, recently_commands, recently_logged
 
 app = Flask(__name__)
 api_url = '/v1.0'
