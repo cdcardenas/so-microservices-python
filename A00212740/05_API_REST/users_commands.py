@@ -27,8 +27,8 @@ def get_that_user(username):
 
 def recently_logged():
  grep_process = Popen(["lastlog","-t","5"], stdout=PIPE, stderr=PIPE)
- log = Popen(["awk",'-F',':','{print $1}'], stdin=grep.stdout, stdout=PIPE, stderr=PIPE).communicate()[0].split('\n')
- return filter(None,log)
+ user_list = Popen(["awk",'-F',':','{print $1}'], stdin=grep_process.stdout, stdout=PIPE, stderr=PIPE).communicate()[0].split('\n')
+ return filter(None,user_list)
 
 def recently_commands(username):
  if username in get_all_users():

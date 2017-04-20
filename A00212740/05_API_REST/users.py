@@ -40,11 +40,11 @@ def delete_single__user(username):
   remove_user(username);
   return 'OK. el usuario ha sido eliminado', 200
 
-@app.route(api_url+'users/recently_logged',methods=['GET'])
+@app.route(api_url+'/users/recently_logged',methods=['GET'])
 def recent_users():
- logged = {}
- logged = recently_logged()
- return json.dumps(logged), 200
+ list = {}
+ list = recently_logged()
+ return json.dumps(list), 200
 
 
 @app.route(api_url+'/users/recently_logged',methods=['POST'])
